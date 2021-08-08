@@ -5,16 +5,29 @@ Vue.use(VueRouter)
 
 import Login from 'components/Login'
 import Home from 'components/Home'
+import Welcome from 'components/Welcome'
+import Users from 'components/user/Users'
 
 const routes = [
   // 默认路由 -> 路由重定向
   { path: '/', redirect: '/login' },
-
   // /login 路由
   { path: '/login', component: Login },
 
   // /home 路由
-  { path: '/home', component: Home },
+  {
+    path: '/home',
+    component: Home,
+    // 重定向到 /welcome
+    redirect: '/welcome',
+    children: [
+      // /welcome 子路由
+      { path: '/welcome', component: Welcome },
+
+      // /users 子路由
+      { path: '/users', component: Users },
+    ],
+  },
 ]
 
 const router = new VueRouter({

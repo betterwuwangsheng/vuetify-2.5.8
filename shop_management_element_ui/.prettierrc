@@ -3,5 +3,6 @@
   "semi": false,
   "bracketSpacing": true,
   "htmlWhitespaceSensitivity": "ignore",
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "jsxBracketSameLine": false
 }

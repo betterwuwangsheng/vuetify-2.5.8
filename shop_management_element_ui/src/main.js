@@ -19,6 +19,13 @@ Vue.prototype.$http = axios
 // 本机地址
 // axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 // 远程后台地址
+// 请求拦截器
+axios.interceptors.request.use(config => {
+  // 在最后必须 return config
+  // 设置 headers 中的 Authorization 值
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
 axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1/'
 
 Vue.config.productionTip = false
