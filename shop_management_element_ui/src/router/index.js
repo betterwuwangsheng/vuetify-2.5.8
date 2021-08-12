@@ -7,6 +7,8 @@ import Login from 'components/Login'
 import Home from 'components/Home'
 import Welcome from 'components/Welcome'
 import Users from 'components/user/Users'
+import Rights from 'components/authority/Rights'
+import Roles from 'components/authority/Roles'
 
 const routes = [
   // 默认路由 -> 路由重定向
@@ -23,9 +25,12 @@ const routes = [
     children: [
       // /welcome 子路由
       { path: '/welcome', component: Welcome },
-
       // /users 子路由
       { path: '/users', component: Users },
+      // /rights 子路由
+      { path: '/rights', component: Rights },
+      // /roles 子路由
+      { path: '/roles', component: Roles },
     ],
   },
 ]

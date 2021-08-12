@@ -31,12 +31,7 @@
 
         <!-- 按钮区域 -->
         <el-form-item class="btns">
-          <el-button
-            v-loading.fullscreen.lock="fullscreenLoading"
-            type="primary"
-            class="login"
-            @click="login"
-          >
+          <el-button type="primary" class="login" @click="login">
             登录
           </el-button>
           <el-button type="info" class="reset" @click="resetLoginForm">
@@ -52,8 +47,6 @@ export default {
   name: 'Login',
   data() {
     return {
-      // 全屏遮罩
-      fullscreenLoading: false,
       // 登录表单的数据绑定对象
       loginForm: {
         // 用户名
@@ -105,25 +98,9 @@ export default {
     },
     // 登录
     login() {
-      // 加载样式
-      // const loading = this.$loading({
-      //   lock: true,
-      //   text: 'Loading',
-      //   spinner: 'el-icon-loading',
-      //   background: 'rgba(0, 0, 0, 0.7)',
-      // })
-      // setTimeout(() => {
-      //   loading.close()
-      // }, 1000)
-
       // 登录之前的验证
       this.$refs.loginFormRef.validate(async validate => {
         if (!validate) return
-
-        this.fullscreenLoading = true
-        setTimeout(() => {
-          this.fullscreenLoading = false
-        }, 2000)
 
         const { data: result } = await this.$http.post('login', this.loginForm)
         // 登录失败

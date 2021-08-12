@@ -5,6 +5,8 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  /* 强制最小宽度 */
+  min-width: 1366px;
 }
 
 .el-breadcrumb {
