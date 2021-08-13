@@ -9,6 +9,7 @@ import Welcome from 'components/Welcome'
 import Users from 'components/user/Users'
 import Rights from 'components/authority/Rights'
 import Roles from 'components/authority/Roles'
+import Categories from 'components/goods/Categories'
 
 const routes = [
   // 默认路由 -> 路由重定向
@@ -31,6 +32,8 @@ const routes = [
       { path: '/rights', component: Rights },
       // /roles 子路由
       { path: '/roles', component: Roles },
+      // /categories 子路由
+      { path: '/categories', component: Categories },
     ],
   },
 ]
