@@ -36,6 +36,10 @@ import {
   Alert,
   Tabs,
   TabPane,
+  Checkbox,
+  Steps,
+  Step,
+  Upload,
 } from 'element-ui'
 
 Vue.use(Button)
@@ -70,6 +74,10 @@ Vue.use(Cascader)
 Vue.use(Alert)
 Vue.use(Tabs)
 Vue.use(TabPane)
+Vue.use(Checkbox)
+Vue.use(Steps)
+Vue.use(Step)
+Vue.use(Upload)
 
 // 全局挂载弹窗组件
 // 设置全局变量

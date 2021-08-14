@@ -24,3 +24,9 @@ body,
 .el-cascader-panel {
   height: 400px;
 }
+.el-pagination {
+  margin-top: 20px;
+}
+.ql-editor {
+  min-height: 300px;
+}

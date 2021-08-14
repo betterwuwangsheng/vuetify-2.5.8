@@ -11,6 +11,8 @@ import Rights from 'components/authority/Rights'
 import Roles from 'components/authority/Roles'
 import Categories from 'components/goods/Categories'
 import Params from 'components/goods/Params'
+import GoodsList from 'components/goods/GoodsList'
+import GoodsAdd from 'components/goods/GoodsAdd'
 
 const routes = [
   // 默认路由 -> 路由重定向
@@ -26,35 +28,23 @@ const routes = [
     redirect: '/welcome',
     children: [
       // /welcome 子路由
-      {
-        path: '/welcome',
-        component: Welcome,
-      },
+      { path: '/welcome', component: Welcome },
       // /users 子路由
-      {
-        path: '/users',
-        component: Users,
-      },
+      { path: '/users', component: Users },
       // /rights 子路由
-      {
-        path: '/rights',
-        component: Rights,
-      },
+      { path: '/rights', component: Rights },
       // /roles 子路由
-      {
-        path: '/roles',
-        component: Roles,
-      },
+      { path: '/roles', component: Roles },
       // /categories 子路由
-      {
-        path: '/categories',
-        component: Categories,
-      },
+      { path: '/categories', component: Categories },
       // /params 子路由
-      {
-        path: '/params',
-        component: Params,
-      },
+      { path: '/params', component: Params },
+      // /params 子路由
+      { path: '/params', component: Params },
+      // /goods 子路由
+      { path: '/goods', component: GoodsList },
+      // /goods/add 子路由
+      { path: '/goods/add', component: GoodsAdd },
     ],
   },
 ]
