@@ -34,7 +34,7 @@
             <i
               class="el-icon-success icon"
               v-if="scope.row.cat_deleted === false"
-              style="color: lightgreen"
+              style="color: #3c934c"
             ></i>
             <i class="el-icon-error icon" v-else style="color: red"></i>
           </div>

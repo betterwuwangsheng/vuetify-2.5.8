@@ -21,3 +21,6 @@ body,
   margin-top: 20px;
   font-size: 14px;
 }
+.el-cascader-panel {
+  height: 400px;
+}
