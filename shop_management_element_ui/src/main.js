@@ -19,8 +19,12 @@ import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
 
+// 导入 echarts
+import echarts from 'components/goods/echartsUi.js'
+
 // 挂载到 vue 原型对象上
 Vue.prototype.$http = axios
+Vue.prototype.$echarts = echarts
 
 // 配置请求的根路径
 // 本机地址

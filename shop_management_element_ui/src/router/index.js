@@ -14,6 +14,7 @@ import Params from 'components/goods/Params'
 import GoodsList from 'components/goods/GoodsList'
 import GoodsAdd from 'components/goods/GoodsAdd'
 import GoodsOrders from 'components/goods/GoodsOrders'
+import Reports from 'components/goods/Reports'
 
 const routes = [
   // 默认路由 -> 路由重定向
@@ -48,6 +49,8 @@ const routes = [
       { path: '/goods/add', component: GoodsAdd },
       // /goods/add 子路由
       { path: '/orders', component: GoodsOrders },
+      // /reports 子路由
+      { path: '/reports', component: Reports },
     ],
   },
 ]
