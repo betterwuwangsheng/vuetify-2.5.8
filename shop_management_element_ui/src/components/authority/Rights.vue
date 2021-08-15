@@ -21,16 +21,8 @@
           <!-- —	自定义列的内容，参数为 { row, column, $index } -->
           <!-- header	自定义表头的内容. 参数为 { column, $index } -->
           <template slot-scope="scope">
-            <el-tag effect="dark" type="danger" v-if="scope.row.level === '0'">
-              一级权限
-            </el-tag>
-            <el-tag
-              effect="dark"
-              type="success"
-              v-else-if="scope.row.level === '1'"
-            >
-              二级权限
-            </el-tag>
+            <el-tag effect="dark" type="danger" v-if="scope.row.level === '0'">一级权限</el-tag>
+            <el-tag effect="dark" type="success" v-else-if="scope.row.level === '1'">二级权限</el-tag>
             <el-tag effect="dark" v-else>三级权限</el-tag>
           </template>
         </el-table-column>

@@ -3,18 +3,22 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import Login from 'components/Login'
-import Home from 'components/Home'
-import Welcome from 'components/Welcome'
-import Users from 'components/user/Users'
-import Rights from 'components/authority/Rights'
-import Roles from 'components/authority/Roles'
-import Categories from 'components/goods/Categories'
-import Params from 'components/goods/Params'
-import GoodsList from 'components/goods/GoodsList'
-import GoodsAdd from 'components/goods/GoodsAdd'
-import GoodsOrders from 'components/goods/GoodsOrders'
-import Reports from 'components/goods/Reports'
+// 路由懒加载
+const Login = () => import(/* webpackChunkName: "Login_Home_Welcome" */ 'components/Login')
+const Home = () => import(/* webpackChunkName: "Login_Home_Welcome" */ 'components/Home')
+const Welcome = () => import(/* webpackChunkName: "Login_Home_Welcome" */ 'components/Welcome')
+
+const Users = () => import(/* webpackChunkName: "Users_Rights_Roles" */ 'components/user/Users')
+const Rights = () => import(/* webpackChunkName: "Users_Rights_Roles" */ 'components/authority/Rights')
+const Roles = () => import(/* webpackChunkName: "Users_Rights_Roles" */ 'components/authority/Roles')
+
+const Categories = () => import(/* webpackChunkName: "Categories_Params_GoodsList */ 'components/goods/Categories')
+const Params = () => import(/* webpackChunkName: "Categories_Params_GoodsList */ 'components/goods/Params')
+const GoodsList = () => import(/* webpackChunkName: "Categories_Params_GoodsList */ 'components/goods/GoodsList')
+
+const GoodsAdd = () => import(/* webpackChunkName: "GoodsAdd_GoodsOrders_Reports */ 'components/goods/GoodsAdd')
+const GoodsOrders = () => import(/* webpackChunkName: "GoodsAdd_GoodsOrders_Reports */ 'components/goods/GoodsOrders')
+const Reports = () => import(/* webpackChunkName: "GoodsAdd_GoodsOrders_Reports */ 'components/goods/Reports')
 
 const routes = [
   // 默认路由 -> 路由重定向

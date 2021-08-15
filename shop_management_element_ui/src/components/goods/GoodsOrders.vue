@@ -24,9 +24,7 @@
         <el-table-column label="订单价格" prop="order_price"></el-table-column>
         <el-table-column label="是否付款">
           <template slot-scope="scope">
-            <el-tag type="danger" size="small" v-if="scope.row.pay_status">
-              未付款
-            </el-tag>
+            <el-tag type="danger" size="small" v-if="scope.row.pay_status">未付款</el-tag>
             <el-tag type="success" size="small" v-else>已付款</el-tag>
           </template>
         </el-table-column>
@@ -34,18 +32,8 @@
         <el-table-column label="下单时间" prop="create_time"></el-table-column>
         <el-table-column label="操作">
           <template slot>
-            <el-button
-              type="primary"
-              size="small"
-              icon="el-icon-edit"
-              @click="showEditDialog"
-            ></el-button>
-            <el-button
-              type="success"
-              size="small"
-              icon="el-icon-location"
-              @click="showProgressDialog"
-            ></el-button>
+            <el-button type="primary" size="small" icon="el-icon-edit" @click="showEditDialog"></el-button>
+            <el-button type="success" size="small" icon="el-icon-location" @click="showProgressDialog"></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -62,18 +50,8 @@
     </el-card>
 
     <!-- 编辑对话框 -->
-    <el-dialog
-      title="修改地址"
-      :visible.sync="addressDialogVisible"
-      width="50%"
-      @close="addressDialogClosed"
-    >
-      <el-form
-        :model="addressForm"
-        :rules="addressFormRules"
-        ref="addressFormRef"
-        label-width="100px"
-      >
+    <el-dialog title="修改地址" :visible.sync="addressDialogVisible" width="50%" @close="addressDialogClosed">
+      <el-form :model="addressForm" :rules="addressFormRules" ref="addressFormRef" label-width="100px">
         <el-form-item label="省市区/县" prop="address1">
           <el-cascader
             v-model="addressForm.address1"
@@ -87,24 +65,14 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="addressDialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">
-          确 定
-        </el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
       </span>
     </el-dialog>
     <!-- 展示物流进度对话框 -->
-    <el-dialog
-      title="查看物流进度"
-      :visible.sync="progressDialogVisible"
-      width="50%"
-    >
+    <el-dialog title="查看物流进度" :visible.sync="progressDialogVisible" width="50%">
       <!-- 时间线 -->
       <el-timeline>
-        <el-timeline-item
-          v-for="(activity, index) in progressInfo"
-          :key="index"
-          :timestamp="activity.time"
-        >
+        <el-timeline-item v-for="(activity, index) in progressInfo" :key="index" :timestamp="activity.time">
           {{ activity.context }}
         </el-timeline-item>
       </el-timeline>
@@ -135,12 +103,8 @@ export default {
         address2: '',
       },
       addressFormRules: {
-        address1: [
-          { required: true, message: '请选择省市区县', trigger: 'blur' },
-        ],
-        address2: [
-          { required: true, message: '请输入详细地址', trigger: 'blur' },
-        ],
+        address1: [{ required: true, message: '请选择省市区县', trigger: 'blur' }],
+        address2: [{ required: true, message: '请输入详细地址', trigger: 'blur' }],
       },
       cityData,
       // 物流进度对话框

@@ -20,12 +20,7 @@
       ></el-alert>
 
       <!-- 步骤条 -->
-      <el-steps
-        :space="200"
-        :active="activeIndex - 0"
-        finish-status="success"
-        align-center
-      >
+      <el-steps :space="200" :active="activeIndex - 0" finish-status="success" align-center>
         <el-step title="基本信息"></el-step>
         <el-step title="商品参数"></el-step>
         <el-step title="商品属性"></el-step>
@@ -35,19 +30,8 @@
       </el-steps>
 
       <!-- Tab栏 -->
-      <el-form
-        :model="addForm"
-        :rules="addFormRules"
-        ref="addFormRef"
-        label-width="100px"
-        label-position="top"
-      >
-        <el-tabs
-          v-model="activeIndex"
-          :tab-position="'left'"
-          :before-leave="beforeTabLeave"
-          @tab-click="tabClicked"
-        >
+      <el-form :model="addForm" :rules="addFormRules" ref="addFormRef" label-width="100px" label-position="top">
+        <el-tabs v-model="activeIndex" :tab-position="'left'" :before-leave="beforeTabLeave" @tab-click="tabClicked">
           <el-tab-pane label="基本信息" name="0">
             <el-form-item label="商品名称" prop="goods_name">
               <el-input v-model="addForm.goods_name"></el-input>
@@ -72,28 +56,15 @@
           </el-tab-pane>
           <el-tab-pane label="商品参数" name="1">
             <!-- 渲染表单的Item项 -->
-            <el-form-item
-              v-for="item in manyTableData"
-              :key="item.attr_id"
-              :label="item.attr_name"
-            >
+            <el-form-item v-for="item in manyTableData" :key="item.attr_id" :label="item.attr_name">
               <!-- 复选框组 -->
               <el-checkbox-group v-model="item.attr_vals">
-                <el-checkbox
-                  :label="cb"
-                  v-for="(cb, i) in item.attr_vals"
-                  :key="i"
-                  border
-                ></el-checkbox>
+                <el-checkbox :label="cb" v-for="(cb, i) in item.attr_vals" :key="i" border></el-checkbox>
               </el-checkbox-group>
             </el-form-item>
           </el-tab-pane>
           <el-tab-pane label="商品属性" name="2">
-            <el-form-item
-              :label="item.attr_name"
-              v-for="item in onlyTableData"
-              :key="item.attr_id"
-            >
+            <el-form-item :label="item.attr_name" v-for="item in onlyTableData" :key="item.attr_id">
               <el-input v-model="item.attr_vals"></el-input>
             </el-form-item>
           </el-tab-pane>
@@ -114,18 +85,12 @@
             <!-- 富文本编辑器 -->
             <quill-editor v-model="addForm.goods_introduce"></quill-editor>
             <!-- 添加商品 -->
-            <el-button type="primary" class="btnAdd" @click="addGoods">
-              添加商品
-            </el-button>
+            <el-button type="primary" class="btnAdd" @click="addGoods">添加商品</el-button>
           </el-tab-pane>
         </el-tabs>
       </el-form>
     </el-card>
-    <el-dialog
-      title="图片预览"
-      :visible.sync="previewDialogVisible"
-      width="50%"
-    >
+    <el-dialog title="图片预览" :visible.sync="previewDialogVisible" width="50%">
       <img :src="picPreviewPath" alt="" class="previewImg" />
     </el-dialog>
   </div>
@@ -153,21 +118,11 @@ export default {
         attrs: [],
       },
       addFormRules: {
-        goods_name: [
-          { required: true, message: '请输入商品名称', trigger: 'blur' },
-        ],
-        goods_price: [
-          { required: true, message: '请输入商品价格', trigger: 'blur' },
-        ],
-        goods_weight: [
-          { required: true, message: '请输入商品重量', trigger: 'blur' },
-        ],
-        goods_number: [
-          { required: true, message: '请输入商品数量', trigger: 'blur' },
-        ],
-        goods_cat: [
-          { required: true, message: '请选择商品分类', trigger: 'blur' },
-        ],
+        goods_name: [{ required: true, message: '请输入商品名称', trigger: 'blur' }],
+        goods_price: [{ required: true, message: '请输入商品价格', trigger: 'blur' }],
+        goods_weight: [{ required: true, message: '请输入商品重量', trigger: 'blur' }],
+        goods_number: [{ required: true, message: '请输入商品数量', trigger: 'blur' }],
+        goods_cat: [{ required: true, message: '请选择商品分类', trigger: 'blur' }],
       },
       // 商品列表
       cateList: [],
@@ -244,12 +199,9 @@ export default {
     async tabClicked() {
       // 访问动态参数面板
       if (this.activeIndex === '1') {
-        const { data: res } = await this.$http.get(
-          `categories/${this.getCateId}/attributes`,
-          {
-            params: { sel: 'many' },
-          }
-        )
+        const { data: res } = await this.$http.get(`categories/${this.getCateId}/attributes`, {
+          params: { sel: 'many' },
+        })
         if (res.meta.status !== 200) {
           this.$message({
             type: 'error',
@@ -258,17 +210,13 @@ export default {
           })
         }
         res.data.forEach(item => {
-          item.attr_vals =
-            item.attr_vals.length === 0 ? [] : item.attr_vals.split(' ')
+          item.attr_vals = item.attr_vals.length === 0 ? [] : item.attr_vals.split(' ')
         })
         this.manyTableData = res.data
       } else if (this.activeIndex === '2') {
-        const { data: res } = await this.$http.get(
-          `categories/${this.getCateId}/attributes`,
-          {
-            params: { sel: 'only' },
-          }
-        )
+        const { data: res } = await this.$http.get(`categories/${this.getCateId}/attributes`, {
+          params: { sel: 'only' },
+        })
         if (res.meta.status !== 200) {
           return this.$message({
             type: 'error',

@@ -11,17 +11,8 @@
     <el-card>
       <el-row :gutter="20">
         <el-col :span="8">
-          <el-input
-            placeholder="请输入内容"
-            v-model="queryInfo.query"
-            clearable
-            @clear="getGoodsList"
-          >
-            <el-button
-              @click="getGoodsList"
-              slot="append"
-              icon="el-icon-search"
-            ></el-button>
+          <el-input placeholder="请输入内容" v-model="queryInfo.query" clearable @clear="getGoodsList">
+            <el-button @click="getGoodsList" slot="append" icon="el-icon-search"></el-button>
           </el-input>
         </el-col>
         <el-col :span="4">
@@ -33,21 +24,9 @@
       <el-table :data="goodsList" border stripe>
         <el-table-column type="index"></el-table-column>
         <el-table-column label="商品名称" prop="goods_name"></el-table-column>
-        <el-table-column
-          label="商品价格(元)"
-          prop="goods_price"
-          width="110px"
-        ></el-table-column>
-        <el-table-column
-          label="商品重量"
-          prop="goods_weight"
-          width="80px"
-        ></el-table-column>
-        <el-table-column
-          label="商品数量"
-          prop="goods_number"
-          width="80px"
-        ></el-table-column>
+        <el-table-column label="商品价格(元)" prop="goods_price" width="110px"></el-table-column>
+        <el-table-column label="商品重量" prop="goods_weight" width="80px"></el-table-column>
+        <el-table-column label="商品数量" prop="goods_number" width="80px"></el-table-column>
         <el-table-column label="创建时间" prop="add_time" width="160px">
           <template slot-scope="scope">
             {{ scope.row.add_time | dataFormat }}
@@ -134,15 +113,11 @@ export default {
     },
     // 通过 Id 删除商品
     async removeById(id) {
-      const confirmResult = await this.$confirm(
-        '此操作将永久删除该商品, 是否继续?',
-        '提示',
-        {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning',
-        }
-      ).catch(err => err)
+      const confirmResult = await this.$confirm('此操作将永久删除该商品, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).catch(err => err)
       if (confirmResult !== 'confirm') {
         return this.$message({
           type: 'info',

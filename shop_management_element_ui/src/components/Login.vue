@@ -8,13 +8,7 @@
       </div>
 
       <!-- 登录表单区域 -->
-      <el-form
-        label-width="0px"
-        class="login_form"
-        :model="loginForm"
-        :rules="loginFormRules"
-        ref="loginFormRef"
-      >
+      <el-form label-width="0px" class="login_form" :model="loginForm" :rules="loginFormRules" ref="loginFormRef">
         <!-- 用户名 -->
         <el-form-item prop="username">
           <el-input v-model="loginForm.username">
@@ -31,12 +25,8 @@
 
         <!-- 按钮区域 -->
         <el-form-item class="btns">
-          <el-button type="primary" class="login" @click="login">
-            登录
-          </el-button>
-          <el-button type="info" class="reset" @click="resetLoginForm">
-            重置
-          </el-button>
+          <el-button type="primary" class="login" @click="login">登录</el-button>
+          <el-button type="info" class="reset" @click="resetLoginForm">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
