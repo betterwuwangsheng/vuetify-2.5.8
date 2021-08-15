@@ -40,6 +40,8 @@ import {
   Steps,
   Step,
   Upload,
+  Timeline,
+  TimelineItem,
 } from 'element-ui'
 
 Vue.use(Button)
@@ -78,6 +80,8 @@ Vue.use(Checkbox)
 Vue.use(Steps)
 Vue.use(Step)
 Vue.use(Upload)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 
 // 全局挂载弹窗组件
 // 设置全局变量
